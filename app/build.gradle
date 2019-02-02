@@ -24,6 +24,11 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
     signingConfigs {
         config {
             keyAlias keystoreProperties['keyAlias']
@@ -35,7 +40,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.home1konstantinov"
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -59,4 +64,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.crashlytics.sdk.android:answers:1.4.6'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+
+    def appCenterSdkVersion = '1.11.2'
+    implementation "com.microsoft.appcenter:appcenter-push:${appCenterSdkVersion}"
 }
