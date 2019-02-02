@@ -112,8 +112,8 @@ workflows:
     jobs:
       - "Dependencies"
       - "Lint":
-          requires:
-            - "Dependencies"
+        requires:
+          "Dependencies"
 #      - "Checkstyle":
 #        requires:
 #          - "Dependencies"
