@@ -16,7 +16,7 @@ aliases:
     - "FindBugs"
 
 workflows:
-  versoion: 2
+  version: 2
   build:
     jobs:
       - "Dependencies"
