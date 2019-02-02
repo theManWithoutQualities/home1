@@ -36,20 +36,20 @@ jobs:
   "Dependencies":
     <<: *environment
     steps:
-    - checkout
-    - *attach_workspace
-    - restore_cache:
-        key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-    - run:
-        name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
-        command: sudo chmod +x ./gradlew
-    - run:
-        name: Download Dependencies
-        command: ./gradlew androidDependencies
-    - save_cache:
-        paths:
-        - ~/.gradle
-        key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - checkout
+      - *attach_workspace
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
+          command: sudo chmod +x ./gradlew
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+          - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
   "Lint":
     <<: *environment
     working_directory: ~/code
