@@ -16,6 +16,28 @@ aliases:
     - "Dependencies"
 
 version: 2
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - "Dependencies"
+      - "Lint":
+        requires:
+          - *deps
+#      - "Checkstyle":
+#        requires:
+#          - "Dependencies"
+#      - "PMD":
+#        requires:
+#          - "Dependencies"
+#      - "FindBugs":
+#        requires:
+#          - "Dependencies"
+#      - "Build":
+#        requires: *tests
+#      - "Deploy":
+#        requires:
+#          - "Build"
 jobs:
   "Dependencies":
     <<: *environment
@@ -107,26 +129,3 @@ jobs:
         if [ "${CIRCLE_BRANCH}" == "develop" ]; then
           bash ./scripts/deploy-appcenter.sh
         fi
-
-workflows:
-  version: 2
-  build_test_deploy:
-    jobs:
-      - "Dependencies"
-      - "Lint":
-        requires:
-          - *deps
-#      - "Checkstyle":
-#        requires:
-#          - "Dependencies"
-#      - "PMD":
-#        requires:
-#          - "Dependencies"
-#      - "FindBugs":
-#        requires:
-#          - "Dependencies"
-#      - "Build":
-#        requires: *tests
-#      - "Deploy":
-#        requires:
-#          - "Build"
