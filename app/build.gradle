@@ -1,14 +1,22 @@
 buildscript {
     repositories {
+        google()
+        jcenter()
         maven { url 'https://maven.fabric.io/public' }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
 
     dependencies {
+        classpath 'com.google.gms:google-services:4.0.1'
         classpath 'io.fabric.tools:gradle:1.+'
+        classpath "gradle.plugin.appcenter-publish-plugin:plugin:0.0.2"
     }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: "com.teamwanari.appcenter-publish-plugin"
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -23,11 +31,18 @@ def keystorePropertiesFile = file("keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
+appCenter {
+    apiToken = "128d1c48beca83eda2640413e166f86efb4760d0"               // Required. Token generated on your AppCenter account
+    appName = "home1Konstantinov"           // Required. App name on AppCenter
+    appOwner = "konst007-tut.by"                 // Required. User or Organization name who owns the App on AppCenter
+    artifact = file("$projectDir/app/build/outputs/apk/release/app-release.apk") // Required. Path to your release build artifact
+    destination = "Konstantinov"      // Required. Name of the Test Group on AppCenter
+    releaseNotes = "это dev!" // Optional. Release notes...
+    verbose = true                  // Optional. Enables API call logging. Defaults to false
+}
 android {
-    android {
-        lintOptions {
-            abortOnError false
-        }
+    lintOptions {
+        abortOnError false
     }
     signingConfigs {
         config {
@@ -42,8 +57,8 @@ android {
         applicationId "com.example.home1konstantinov"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 100
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
