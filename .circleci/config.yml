@@ -55,6 +55,8 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - persist_to_workspace:
           root: ~/
+          paths:
+            - /
 
   "Lint":
     <<: *environment
