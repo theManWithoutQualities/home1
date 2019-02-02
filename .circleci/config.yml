@@ -1,12 +1,14 @@
 aliases:
-  - &attach_workspace
-      attach_workspace:
-        at: ~/code
   - &environment
       docker:
         - image: circleci/android:api-28-alpha
       environment:
         JVM_OPTS: -Xmx3200m
+  - &workspace
+      attach_workspace:
+        at: ~/code
+      working_directory: ~/code
+
   - &tests
     - "Lint"
     - "Checkstyle"
@@ -39,9 +41,9 @@ workflows:
 jobs:
   "Dependencies":
     <<: *environment
+    <<: *workspace
     steps:
       - checkout
-      - *attach_workspace
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
@@ -52,9 +54,14 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - persist_to_workspace:
+          root: ~/code
+          paths:
+          - ~/
 
   "Lint":
     <<: *environment
+    <<: *workspace
     working_directory: ~/code
     steps:
       - run:
@@ -68,6 +75,7 @@ jobs:
 
   "Checkstyle":
     <<: *environment
+    <<: *workspace
     working_directory: ~/code
     steps:
       - run:
@@ -81,6 +89,7 @@ jobs:
 
   "PMD":
     <<: *environment
+    <<: *workspace
     working_directory: ~/code
     steps:
       - run:
@@ -94,6 +103,7 @@ jobs:
 
   "FindBugs":
     <<: *environment
+    <<: *workspace
     working_directory: ~/code
     steps:
       - run:
@@ -107,6 +117,7 @@ jobs:
 
   "Build":
     <<: *environment
+    <<: *workspace
     working_directory: ~/code
     steps:
       - run:
@@ -117,6 +128,7 @@ jobs:
 
   "Deploy":
     <<: *environment
+    <<: *workspace
     working_directory: ~/code
     steps:
       - run:
