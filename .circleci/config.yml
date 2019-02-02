@@ -111,9 +111,9 @@ workflows:
   build_test_deploy:
     jobs:
       - "Dependencies"
-#      - "Lint":
-#        requires:
-#          - "Dependencies"
+      - "Lint":
+        requires:
+          - "Dependencies"
 #      - "Checkstyle":
 #        requires:
 #          - "Dependencies"
