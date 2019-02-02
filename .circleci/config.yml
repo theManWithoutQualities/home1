@@ -41,7 +41,6 @@ workflows:
 jobs:
   "Dependencies":
     <<: *environment
-    <<: *workspace
     steps:
       - checkout
       - restore_cache:
@@ -62,7 +61,6 @@ jobs:
   "Lint":
     <<: *environment
     <<: *workspace
-    working_directory: ~/code
     steps:
       - run:
           command: ./gradlew lint test
@@ -76,7 +74,6 @@ jobs:
   "Checkstyle":
     <<: *environment
     <<: *workspace
-    working_directory: ~/code
     steps:
       - run:
           command: ./gradlew checkstyle
@@ -90,7 +87,6 @@ jobs:
   "PMD":
     <<: *environment
     <<: *workspace
-    working_directory: ~/code
     steps:
       - run:
           command: ./gradlew pmd
@@ -104,7 +100,6 @@ jobs:
   "FindBugs":
     <<: *environment
     <<: *workspace
-    working_directory: ~/code
     steps:
       - run:
           command: ./gradlew findbugs
@@ -118,7 +113,6 @@ jobs:
   "Build":
     <<: *environment
     <<: *workspace
-    working_directory: ~/code
     steps:
       - run:
           command: ./gradlew assembleRelease
@@ -129,7 +123,6 @@ jobs:
   "Deploy":
     <<: *environment
     <<: *workspace
-    working_directory: ~/code
     steps:
       - run:
           command: |
