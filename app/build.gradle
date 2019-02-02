@@ -35,7 +35,7 @@ appCenter {
     apiToken = "128d1c48beca83eda2640413e166f86efb4760d0"               // Required. Token generated on your AppCenter account
     appName = "home1Konstantinov"           // Required. App name on AppCenter
     appOwner = "konst007-tut.by"                 // Required. User or Organization name who owns the App on AppCenter
-    artifact = file("$projectDir/app/build/outputs/apk/release/app-release.apk") // Required. Path to your release build artifact
+    artifact = file("$projectDir/app/build/outputs/apk/home1Konstantinov.apk") // Required. Path to your release build artifact
     destination = "Konstantinov"      // Required. Name of the Test Group on AppCenter
     releaseNotes = "это dev!" // Optional. Release notes...
     verbose = true                  // Optional. Enables API call logging. Defaults to false
