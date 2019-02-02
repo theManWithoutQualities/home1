@@ -20,17 +20,22 @@ workflows:
     jobs:
       - "Dependencies"
       - "Lint":
-          requires: "Dependencies"
+        requires:
+          - "Dependencies"
       - "Checkstyle":
-          requires: "Dependencies"
+        requires:
+          - "Dependencies"
       - "PMD":
-          requires: "Dependencies"
+        requires:
+          - "Dependencies"
       - "FindBugs":
-          requires: "Dependencies"
+        requires:
+          - "Dependencies"
       - "Build":
-          requires: *tests
+        requires: *tests
       - "Deploy":
-          requires: "Build"
+        requires:
+          - "Build"
 
 jobs:
   "Dependencies":
