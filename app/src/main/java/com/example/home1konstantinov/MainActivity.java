@@ -8,6 +8,9 @@ import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import io.fabric.sdk.android.Fabric;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.push.Push;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,5 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView version = findViewById(R.id.version);
         version.setText(BuildConfig.VERSION_NAME);
+
+        AppCenter.start(getApplication(), "205829fc-0bf8-427a-8a59-0fc35908bc94", Push.class);
     }
 }
