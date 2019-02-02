@@ -1,7 +1,7 @@
 aliases:
   - &attach_workspace
-    attach_workspace:
-      at: ~/code
+      attach_workspace:
+        at: ~/code
   - &environment
       docker:
         - image: circleci/android:api-28-alpha
@@ -22,108 +22,108 @@ workflows:
       - "Lint":
           requires:
             - "Dependencies"
-#      - "Checkstyle":
-#        requires:
-#          - "Dependencies"
-#      - "PMD":
-#        requires:
-#          - "Dependencies"
-#      - "FindBugs":
-#        requires:
-#          - "Dependencies"
-#      - "Build":
-#        requires: *tests
-#      - "Deploy":
-#        requires:
-#          - "Build"
+      - "Checkstyle":
+          requires:
+            - "Dependencies"
+      - "PMD":
+          requires:
+            - "Dependencies"
+      - "FindBugs":
+          requires:
+            - "Dependencies"
+      - "Build":
+          requires: *tests
+      - "Deploy":
+          requires:
+            - "Build"
 jobs:
   "Dependencies":
     <<: *environment
     steps:
-    - checkout
-    - *attach_workspace
-    - restore_cache:
-        key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-    - run:
-        command: sudo chmod +x ./gradlew
-    - run:
-        command: ./gradlew androidDependencies
-    - save_cache:
-        paths:
-        - ~/.gradle
-        key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - checkout
+      - *attach_workspace
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          command: sudo chmod +x ./gradlew
+      - run:
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
   "Lint":
     <<: *environment
     working_directory: ~/code
     steps:
-    - run:
-        command: ./gradlew lint test
-    - store_artifacts:
-        path: app/build/reports
-        destination: lint
-    - store_test_results:
-        path: app/build/test-results
-        destination: lint
+      - run:
+          command: ./gradlew lint test
+      - store_artifacts:
+          path: app/build/reports
+          destination: lint
+      - store_test_results:
+          path: app/build/test-results
+          destination: lint
 
   "Checkstyle":
     <<: *environment
     working_directory: ~/code
     steps:
-    - run:
-        command: ./gradlew checkstyle
-    - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-        path: app/build/reports
-        destination: checkstyle
-    - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-        path: app/build/test-results
-        destination: checkstyle
+      - run:
+          command: ./gradlew checkstyle
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: app/build/reports
+          destination: checkstyle
+      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: app/build/test-results
+          destination: checkstyle
 
   "PMD":
     <<: *environment
     working_directory: ~/code
     steps:
-    - run:
-        command: ./gradlew pmd
-    - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-        path: app/build/reports
-        destination: pmd
-    - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-        path: app/build/test-results
-        destination: pmd
+      - run:
+          command: ./gradlew pmd
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: app/build/reports
+          destination: pmd
+      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: app/build/test-results
+          destination: pmd
 
   "FindBugs":
     <<: *environment
     working_directory: ~/code
     steps:
-    - run:
-        command: ./gradlew findbugs
-    - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-        path: app/build/reports
-        destination: findbugs
-    - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-        path: app/build/test-results
-        destination: findbugs
+      - run:
+          command: ./gradlew findbugs
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: app/build/reports
+          destination: findbugs
+      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: app/build/test-results
+          destination: findbugs
 
   "Build":
     <<: *environment
     working_directory: ~/code
     steps:
-    - run:
-        command: ./gradlew assembleRelease
-    - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-        path: app/build/outputs/apk
-        destination: release
+      - run:
+          command: ./gradlew assembleRelease
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: app/build/outputs/apk
+          destination: release
 
   "Deploy":
     <<: *environment
     working_directory: ~/code
     steps:
-    - run:
-      command: |
-        if [ "${CIRCLE_BRANCH}" == "master" ]; then
-          bash ./scripts/deploy-fabric.sh
-        fi
-        if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-          bash ./scripts/deploy-appcenter.sh
-        fi
+      - run:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              bash ./scripts/deploy-fabric.sh
+            fi
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              bash ./scripts/deploy-appcenter.sh
+            fi
