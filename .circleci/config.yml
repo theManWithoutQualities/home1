@@ -12,6 +12,8 @@ aliases:
     - "Checkstyle"
     - "PMD"
     - "FindBugs"
+  - &deps
+    - "Dependencies"
 
 version: 2
 jobs:
@@ -113,7 +115,7 @@ workflows:
       - "Dependencies"
       - "Lint":
         requires:
-          "Dependencies"
+          - *deps
 #      - "Checkstyle":
 #        requires:
 #          - "Dependencies"
