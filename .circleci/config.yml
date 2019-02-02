@@ -17,19 +17,19 @@ version: 2
 jobs:
   "Dependencies":
     <<: *environment
-    steps:
-    - checkout
-    - *attach_workspace
-    - restore_cache:
-        key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-    - run:
-        command: sudo chmod +x ./gradlew
-    - run:
-        command: ./gradlew androidDependencies
-    - save_cache:
-        paths:
-        - ~/.gradle
-        key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+#    steps:
+#    - checkout
+#    - *attach_workspace
+#    - restore_cache:
+#        key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+#    - run:
+#        command: sudo chmod +x ./gradlew
+#    - run:
+#        command: ./gradlew androidDependencies
+#    - save_cache:
+#        paths:
+#        - ~/.gradle
+#        key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
   "Lint":
     <<: *environment
