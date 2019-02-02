@@ -161,17 +161,18 @@ jobs:
           fi
 workflows:
   versoion: 2
-  jobs:
-    - "Dependencies"
-    - "Lint":
-        requires: "Dependencies"
-    - "Checkstyle":
-        requires: "Dependencies"
-    - "PMD":
-        requires: "Dependencies"
-    - "FindBugs":
-        requires: "Dependencies"
-    - "Build":
-        requires: *tests
-    - "Deploy":
-        requires: "Build"
+  build-test-and-deploy:
+    jobs:
+      - "Dependencies"
+      - "Lint":
+          requires: "Dependencies"
+      - "Checkstyle":
+          requires: "Dependencies"
+      - "PMD":
+          requires: "Dependencies"
+      - "FindBugs":
+          requires: "Dependencies"
+      - "Build":
+          requires: *tests
+      - "Deploy":
+          requires: "Build"
