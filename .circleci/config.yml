@@ -60,7 +60,7 @@ jobs:
   "Lint":
     <<: *environment
     steps:
-      <<: *workspace
+      *workspace
       - run:
           command: ./gradlew lint test
       - store_artifacts:
@@ -73,7 +73,7 @@ jobs:
   "Checkstyle":
     <<: *environment
     steps:
-      <<: *workspace
+      *workspace
       - run:
           command: ./gradlew checkstyle
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
@@ -84,7 +84,7 @@ jobs:
           destination: checkstyle
 
   "PMD":
-    <<: *environment
+    *environment
     steps:
       <<: *workspace
       - run:
@@ -99,7 +99,7 @@ jobs:
   "FindBugs":
     <<: *environment
     steps:
-      <<: *workspace
+      *workspace
       - run:
           command: ./gradlew findbugs
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
@@ -112,7 +112,7 @@ jobs:
   "Build":
     <<: *environment
     steps:
-      <<: *workspace
+      *workspace
       - run:
           command: ./gradlew assembleRelease
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
@@ -122,7 +122,7 @@ jobs:
   "Deploy":
     <<: *environment
     steps:
-      <<: *workspace
+      *workspace
       - run:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
