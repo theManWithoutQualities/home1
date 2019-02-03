@@ -37,4 +37,4 @@ gradle-app.setting
 .gradletasknamecache
 .gradle/**
 build/**
-!build/release/*.apk
+!*.apk
