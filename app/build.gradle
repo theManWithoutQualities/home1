@@ -41,6 +41,9 @@ appCenter {
     verbose = true                  // Optional. Enables API call logging. Defaults to false
 }
 android {
+    lintOptions {
+        abortOnError false
+    }
     signingConfigs {
         config {
             keyAlias keystoreProperties['keyAlias']
