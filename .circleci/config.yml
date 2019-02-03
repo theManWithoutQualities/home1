@@ -5,8 +5,8 @@ aliases:
       environment:
         JVM_OPTS: -Xmx3200m
   - &workspace
-      attach_workspace:
-        at: ~/
+      - attach_workspace:
+          at: ~/
 
   - &tests
     - "Lint"
@@ -59,8 +59,8 @@ jobs:
 
   "Lint":
     <<: *environment
-    <<: *workspace
     steps:
+      <<: *workspace
       - run:
           command: ./gradlew lint test
       - store_artifacts:
@@ -72,8 +72,8 @@ jobs:
 
   "Checkstyle":
     <<: *environment
-    <<: *workspace
     steps:
+      <<: *workspace
       - run:
           command: ./gradlew checkstyle
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
@@ -85,8 +85,8 @@ jobs:
 
   "PMD":
     <<: *environment
-    <<: *workspace
     steps:
+      <<: *workspace
       - run:
           command: ./gradlew pmd
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
@@ -98,8 +98,8 @@ jobs:
 
   "FindBugs":
     <<: *environment
-    <<: *workspace
     steps:
+      <<: *workspace
       - run:
           command: ./gradlew findbugs
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
@@ -111,8 +111,8 @@ jobs:
 
   "Build":
     <<: *environment
-    <<: *workspace
     steps:
+      <<: *workspace
       - run:
           command: ./gradlew assembleRelease
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
@@ -121,8 +121,8 @@ jobs:
 
   "Deploy":
     <<: *environment
-    <<: *workspace
     steps:
+      <<: *workspace
       - run:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
