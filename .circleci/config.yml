@@ -6,8 +6,7 @@ aliases:
         JVM_OPTS: -Xmx3200m
   - &workspace
       attach_workspace:
-        at: ~/code
-      working_directory: ~/code
+        at: ~/
 
   - &tests
     - "Lint"
