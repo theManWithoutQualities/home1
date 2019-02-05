@@ -30,6 +30,7 @@ workflows:
       - "FindBugs":
           requires:
             - "Dependencies"
+            - "Lint"
       - "Build":
           requires: *tests
       - "Deploy":
@@ -64,10 +65,10 @@ jobs:
           command: ./gradlew lint test
       - store_artifacts:
           path: app/build/reports
-          destination: lint
+          destination: reports
       - store_test_results:
           path: app/build/test-results
-          destination: lint
+          destination: test-results
 
   "Checkstyle":
     <<: *environment
@@ -78,11 +79,7 @@ jobs:
           command: ./gradlew checkstyle
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
-          destination: checkstyle
-      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: app/build/test-results
-          destination: checkstyle
-
+          destination: reports
   "PMD":
     <<: *environment
     steps:
@@ -92,11 +89,7 @@ jobs:
           command: ./gradlew pmd
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
-          destination: pmd
-      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: app/build/test-results
-          destination: pmd
-
+          destination: reports
   "FindBugs":
     <<: *environment
     steps:
@@ -106,11 +99,7 @@ jobs:
           command: ./gradlew findbugs
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
-          destination: findbugs
-      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: app/build/test-results
-          destination: findbugs
-
+          destination: reports
   "Build":
     <<: *environment
     steps:
@@ -119,7 +108,7 @@ jobs:
       - run:
           command: ./gradlew assembleRelease
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: app/build/outputs/apk
+          path: app/build/outputs/apk/release
           destination: release
 
   "Deploy":
