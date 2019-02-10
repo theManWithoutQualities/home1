@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">My Great Application</string>
     <string name="welcome">Welcome!</string>
@@ -8,6 +9,6 @@
     <string name="dark_theme">Dark theme</string>
     <string name="standard_density">Standard density</string>
     <string name="high_density">High density</string>
-    <string name="standard_density_explanation">Portrait: 4 icons in a row  Landscape: 6 icons in a row</string>
-    <string name="high_density_explanation">Portrait: 5 icons in a row \nLandscape: 7 icons in a row</string>
+    <string name="standard_density_explanation">Portrait: 4 icons in a row\nLandscape: 6 icons in a row</string>
+    <string name="high_density_explanation">Portrait: 5 icons in a row\nLandscape: 7 icons in a row</string>
 </resources>

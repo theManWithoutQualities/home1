@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Great Application</string>
+    <string name="welcome">欢迎</string>
+    <string name="next">下一个</string>
+    <string name="logo">商标</string>
+    <string name="description">这是一个发射器。你应该使用它</string>
+    <string name="light_theme">轻主题</string>
+    <string name="dark_theme">" 黑暗的主题"</string>
+    <string name="standard_density">" 标准密度"</string>
+    <string name="high_density">密度高</string>
+    <string name="standard_density_explanation">肖像：连续4个图标\n横向：连续6个图标</string>
+    <string name="high_density_explanation">肖像：连续5个图标\n风景：连续7个图标</string>
+</resources>

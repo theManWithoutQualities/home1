@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Great Application</string>
+    <string name="welcome">Bienvenue!</string>
+    <string name="next">Suivant</string>
+    <string name="logo">Logo</string>
+    <string name="description">Ceci est un lanceur. Vous devriez l\'utiliser</string>
+    <string name="light_theme">Thème lumière</string>
+    <string name="dark_theme">Thème sombre</string>
+    <string name="standard_density">Densité standard</string>
+    <string name="high_density">Haute densité</string>
+    <string name="standard_density_explanation">Portrait: 4 icônes à la suite\nPaysage: 6 icônes à la suite</string>
+    <string name="high_density_explanation">Portrait: 5 icônes à la suite\nPaysage: 7 icônes à la suite</string>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="bottom|center"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:id="@+id/linear_layout"
+    tools:context=".activity.ChooseTheme">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="50dp"
+            android:background="@android:color/white"
+            android:text="@string/light_theme"
+            android:id="@+id/light_theme"
+            android:onClick="clickRadioButtonTheme"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="50dp"
+            android:background="@android:color/darker_gray"
+            android:text="@string/dark_theme"
+            android:id="@+id/dark_theme"
+            android:onClick="clickRadioButtonTheme"/>
+    </RadioGroup>
+    <Button
+        android:id="@+id/button"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@string/next" />
+</LinearLayout>

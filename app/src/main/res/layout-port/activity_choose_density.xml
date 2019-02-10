@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="bottom|center"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:id="@+id/linear_layout"
+    tools:context=".activity.ChooseDensity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/radiobutton_background"
+                android:layout_margin="5dp"
+                android:text="@string/standard_density"
+                android:id="@+id/standard_density"
+                android:onClick="clickRadioButtonDensity"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/radiobutton_background"
+                android:layout_margin="5dp"
+                android:text="@string/high_density"
+                android:id="@+id/high_density"
+                android:onClick="clickRadioButtonDensity"/>
+        </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#00000000">
+            <TextView
+                android:id="@+id/standard_density_explain"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:gravity="center_vertical"
+                android:padding="18dp"
+                android:text="@string/standard_density_explanation" />
+            <TextView
+                android:id="@+id/high_density_explain"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:padding="18dp"
+                android:text="@string/high_density_explanation" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@string/next" />
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@android:color/white"-->
+    <!--android:gravity="bottom|center"-->
+    <!--android:orientation="vertical"-->
+    <!--android:padding="18dp"-->
+    <!--tools:context=".activity.ChooseDensity">-->
+
+    <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<RadioGroup-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/standard_density_radiobutton"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="379dp"-->
+                <!--android:background="@drawable/radiobutton_background"-->
+                <!--android:text="Standart density"></RadioButton>-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/high_density_radiobutton"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="291dp"-->
+                <!--android:background="@drawable/radiobutton_background"-->
+                <!--android:text="High density"></RadioButton>-->
+        <!--</RadioGroup>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/standard_density_explain"-->
+            <!--android:layout_width="345dp"-->
+            <!--android:layout_height="31dp"-->
+            <!--android:text="Portrait: 4 iconst in a row\Landscape: 5 icons in a row"-->
+            <!--tools:layout_editor_absoluteX="0dp"-->
+            <!--tools:layout_editor_absoluteY="206dp" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/high_density_explain"-->
+            <!--android:layout_width="349dp"-->
+            <!--android:layout_height="32dp"-->
+            <!--android:text="Portrait: 5 iconst in a row\Landscape: 7 icons in a row"-->
+            <!--tools:layout_editor_absoluteX="0dp"-->
+            <!--tools:layout_editor_absoluteY="539dp" />-->
+    <!--</android.support.constraint.ConstraintLayout>-->
+    <!--<Button-->
+        <!--android:id="@+id/button"-->
+        <!--style="@style/Base.Widget.AppCompat.Button.Colored"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:text="@string/next" />-->
+<!--</LinearLayout>-->
