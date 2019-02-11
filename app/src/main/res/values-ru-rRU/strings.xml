@@ -11,4 +11,9 @@
     <string name="high_density">Плотный макет</string>
     <string name="standard_density_explanation">Портретная: 4 иконки в строке\nЛандшафтная: 6 иконок в строке</string>
     <string name="high_density_explanation">Портретная: 5 иконок в строке\nЛандшафтная: 7 иконок в строке</string>
+    <string name="name">Николай Константинов</string>
+    <string name="launcher">Лаунчер</string>
+    <string name="list">Список</string>
+    <string name="settings">Настройки</string>
+    <string name="theme">Тема</string>
 </resources>

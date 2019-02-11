@@ -3,8 +3,8 @@ package com.example.home1konstantinov.settings;
 import java.io.Serializable;
 
 public class Settings implements Serializable {
-    private Theme theme;
-    private Density density;
+    private Theme theme = Theme.LIGHT;
+    private Density density = Density.STANDARD;
 
     public Theme getTheme() {
         return theme;

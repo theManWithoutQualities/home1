@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.home1konstantinov.EnterActivity;
 import com.example.home1konstantinov.R;
 import com.example.home1konstantinov.activity.MainActivity;
 import com.example.home1konstantinov.settings.Density;
 import com.example.home1konstantinov.settings.Settings;
 
 public class Launcher extends AppCompatActivity {
-    private Settings settings;
+    private Settings settings = new Settings();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class Launcher extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         final Intent intent = new Intent();
-        intent.setClass(this, MainActivity.class);
+        intent.setClass(this, EnterActivity.class);
         intent.putExtra("settings", this.settings);
         startActivity(intent);
     }

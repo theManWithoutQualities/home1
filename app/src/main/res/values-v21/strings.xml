@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">Николай Константинов</string>
+    <string name="launcher">Лаунчер</string>
+    <string name="list">Список</string>
+    <string name="settings">Настройки</string>
+    <string name="theme">Тема</string>
+</resources>

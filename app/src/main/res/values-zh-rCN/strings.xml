@@ -11,4 +11,9 @@
     <string name="high_density">密度高</string>
     <string name="standard_density_explanation">肖像：连续4个图标\n横向：连续6个图标</string>
     <string name="high_density_explanation">肖像：连续5个图标\n风景：连续7个图标</string>
+    <string name="name">Николай Константинов</string>
+    <string name="launcher">Лаунчер</string>
+    <string name="list">Список</string>
+    <string name="settings">Настройки</string>
+    <string name="theme">Тема</string>
 </resources>

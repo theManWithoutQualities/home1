@@ -12,22 +12,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.launcher.Launcher"
-            android:parentActivityName=".activity.MainActivity">
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".EnterActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MainActivity" />
+                android:value="com.example.home1konstantinov.EnterActivity" />
         </activity>
-        <activity android:name=".activity.ChooseDensity" />
-        <activity android:name=".activity.ChooseTheme" />
-        <activity android:name=".activity.Description" />
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".EnterActivity"
+            android:label="@string/title_activity_enter"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.contacts.ContactListActivity" />
+        <activity
+            android:name=".activity.launcher.Launcher"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EnterActivity" />
+        </activity>
+        <activity android:name=".activity.ChooseDensity" />
+        <activity android:name=".activity.ChooseTheme" />
+        <activity android:name=".activity.Description" />
+        <activity android:name=".activity.MainActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

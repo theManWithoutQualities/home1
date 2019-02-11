@@ -8,6 +8,7 @@ import android.view.View;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.example.home1konstantinov.R;
+import com.example.home1konstantinov.activity.contacts.ContactListActivity;
 import com.example.home1konstantinov.settings.Settings;
 
 import io.fabric.sdk.android.Fabric;
@@ -36,5 +37,11 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("settings", this.settings);
             startActivity(intent);
         });
+    }
+
+    public void showContactList(View view) {
+        final Intent intent = new Intent();
+        intent.setClass(view.getContext(), ContactListActivity.class);
+        startActivity(intent);
     }
 }

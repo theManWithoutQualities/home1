@@ -11,4 +11,9 @@
     <string name="high_density">Haute densité</string>
     <string name="standard_density_explanation">Portrait: 4 icônes à la suite\nPaysage: 6 icônes à la suite</string>
     <string name="high_density_explanation">Portrait: 5 icônes à la suite\nPaysage: 7 icônes à la suite</string>
+    <string name="name">Николай Константинов</string>
+    <string name="launcher">Лаунчер</string>
+    <string name="list">Список</string>
+    <string name="settings">Настройки</string>
+    <string name="theme">Тема</string>
 </resources>
