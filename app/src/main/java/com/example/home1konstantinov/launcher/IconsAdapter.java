@@ -1,23 +1,36 @@
 package com.example.home1konstantinov.launcher;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.home1konstantinov.R;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.List;
 
 class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
-    private final Random random = new Random();
-    private final Map<Integer, Integer> colorMap = new HashMap<>();
+    private List<Integer> colorList;
+    private int deleteCandidateId;
+
+    public List<Integer> getColorList() {
+        return colorList;
+    }
+
+    public int getDeleteCandidateId() {
+        return deleteCandidateId;
+    }
+
+    public IconsAdapter setDeleteCandidateId(int deleteCandidateId) {
+        this.deleteCandidateId = deleteCandidateId;
+        return this;
+    }
+
+    public IconsAdapter(List<Integer> colorList) {
+        this.colorList = colorList;
+    }
 
     @NonNull
     @Override
@@ -26,13 +39,13 @@ class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
                 .from(viewGroup.getContext())
                 .inflate(R.layout.item_icon_view, viewGroup, false);
         view.setOnLongClickListener((v) -> {
-            final int color = ((ColorDrawable) v.getBackground()).getColor();
-            Toast
-                    .makeText(
-                            v.getContext(), "" + String.format("#%06X", 0xFFFFFF & color),
-                            Toast.LENGTH_LONG
-                    )
+            setDeleteCandidateId((int) v.getTag());
+            Snackbar
+                    .make(v, "Are you sure?", Snackbar.LENGTH_INDEFINITE)
+                    .setDuration(5000)
+                    .setAction("Yes", deleteIconListener)
                     .show();
+            Log.i("ACTION", "snackbar");
             return true;
         });
         return new IconsViewHolder(view);
@@ -40,25 +53,13 @@ class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
 
     @Override
     public int getItemCount() {
-        return 100;
+        return colorList.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull IconsViewHolder iconsViewHolder, int position) {
-        iconsViewHolder.bindColor(getColor(position));
-    }
-
-    private int getColor(int position) {
-        Integer color = colorMap.get(position);
-        if (color == null) {
-            color = Color.rgb(
-                    random.nextInt(256),
-                    random.nextInt(256),
-                    random.nextInt(256)
-            );
-            colorMap.put(position, color);
-        }
-        return color;
+        iconsViewHolder.bindColor(colorList.get(position));
+        iconsViewHolder.bindTag(position);
     }
 
     public static class IconsViewHolder extends RecyclerView.ViewHolder {
@@ -69,5 +70,16 @@ class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
         public void bindColor(int color) {
             itemView.setBackgroundColor(color);
         }
+
+        public void bindTag(int tag) {
+            itemView.setTag(tag);
+        }
     }
+
+    private final View.OnClickListener deleteIconListener = v -> {
+        getColorList().remove(getDeleteCandidateId());
+        notifyItemRemoved(getDeleteCandidateId());
+        notifyItemRangeChanged(getDeleteCandidateId(), getColorList().size());
+        Log.i("ACTION", "remove icon");
+    };
 }

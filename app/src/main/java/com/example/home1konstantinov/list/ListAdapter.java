@@ -23,14 +23,11 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.ContactListHolder> {
         return deleteCandidateId;
     }
 
-    private final View.OnClickListener deleteItemListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            getColorList().remove(getDeleteCandidateId());
-            notifyItemRemoved(getDeleteCandidateId());
-            notifyItemRangeChanged(getDeleteCandidateId(), getColorList().size());
-            Log.i("ACTION", "remove item");
-        }
+    private final View.OnClickListener deleteItemListener = v -> {
+        getColorList().remove(getDeleteCandidateId());
+        notifyItemRemoved(getDeleteCandidateId());
+        notifyItemRangeChanged(getDeleteCandidateId(), getColorList().size());
+        Log.i("ACTION", "remove item");
     };
 
     public ListAdapter setDeleteCandidateId(int deleteCandidateId) {

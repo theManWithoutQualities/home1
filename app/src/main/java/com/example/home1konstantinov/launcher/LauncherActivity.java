@@ -6,19 +6,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 
+import com.example.home1konstantinov.ColorDataUtil;
 import com.example.home1konstantinov.EnterActivity;
 import com.example.home1konstantinov.R;
 import com.example.home1konstantinov.settings.Density;
 import com.example.home1konstantinov.settings.Settings;
+import java.util.List;
 
 public class LauncherActivity extends AppCompatActivity {
     private Settings settings = new Settings();
+    private List<Integer> colorList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+
+        colorList = ColorDataUtil.getRandomColorList();
 
         final Intent currentIntent = getIntent();
         if (currentIntent.getExtras() != null) {
@@ -38,7 +45,7 @@ public class LauncherActivity extends AppCompatActivity {
                 )
         );
         iconsRecyclerView.setLayoutManager(gridLayoutManager);
-        IconsAdapter iconsAdapter = new IconsAdapter();
+        IconsAdapter iconsAdapter = new IconsAdapter(colorList);
         iconsRecyclerView.setAdapter(iconsAdapter);
         final int dimensionPixelOffset = getResources().getDimensionPixelOffset(R.dimen.offset);
         iconsRecyclerView.addItemDecoration(new CustomDecoration(dimensionPixelOffset));
@@ -48,7 +55,6 @@ public class LauncherActivity extends AppCompatActivity {
     public void onBackPressed() {
         final Intent intent = new Intent();
         intent.setClass(this, EnterActivity.class);
-        intent.putExtra("settings", this.settings);
         startActivity(intent);
     }
 
@@ -73,5 +79,14 @@ public class LauncherActivity extends AppCompatActivity {
             }
         }
         return 5;
+    }
+
+    public void addIcon(View view) {
+        int color = ColorDataUtil.getRandomColor();
+        colorList.add(0, color);
+        final RecyclerView iconsRecyclerView = findViewById(R.id.iconsRecyclerView);
+        iconsRecyclerView.getAdapter().notifyItemInserted(0);
+        iconsRecyclerView.scrollToPosition(0);
+        Log.i("ACTION", "add icon");
     }
 }

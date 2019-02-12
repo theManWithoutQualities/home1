@@ -19,6 +19,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/fab_add_icon"
         android:layout_gravity="end|bottom"
-        android:onClick="addContact"/>
+        android:onClick="addListItem"/>
 
 </android.support.design.widget.CoordinatorLayout>
