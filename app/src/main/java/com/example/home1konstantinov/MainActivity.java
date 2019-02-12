@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         final View buttonView = findViewById(R.id.button);
         buttonView.setOnClickListener((v) -> {
             final Intent intent = new Intent();
-            intent.setClass(v.getContext(), Description.class);
+            intent.setClass(v.getContext(), DescriptionActivity.class);
             intent.putExtra("settings", this.settings);
             startActivity(intent);
         });

@@ -12,7 +12,7 @@ import com.example.home1konstantinov.R;
 import com.example.home1konstantinov.settings.Density;
 import com.example.home1konstantinov.settings.Settings;
 
-public class Launcher extends AppCompatActivity {
+public class LauncherActivity extends AppCompatActivity {
     private Settings settings = new Settings();
 
     @Override

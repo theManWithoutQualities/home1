@@ -14,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.home1konstantinov.list.ListActivity;
-import com.example.home1konstantinov.launcher.Launcher;
+import com.example.home1konstantinov.launcher.LauncherActivity;
 
 public class EnterActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -56,7 +56,7 @@ public class EnterActivity extends AppCompatActivity
         int id = item.getItemId();
         final Intent intent = new Intent();
         if (id == R.id.nav_launcher) {
-            intent.setClass(this, Launcher.class);
+            intent.setClass(this, LauncherActivity.class);
         } else if (id == R.id.nav_list) {
             intent.setClass(this, ListActivity.class);
         } else if (id == R.id.nav_settings) {

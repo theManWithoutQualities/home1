@@ -31,15 +31,15 @@
         </activity>
         <activity android:name=".list.ListActivity" />
         <activity
-            android:name=".launcher.Launcher"
+            android:name=".launcher.LauncherActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EnterActivity" />
         </activity>
-        <activity android:name=".ChooseDensity" />
-        <activity android:name=".ChooseTheme" />
-        <activity android:name=".Description" />
+        <activity android:name=".ChooseDensityActivity" />
+        <activity android:name=".ChooseThemeActivity" />
+        <activity android:name=".DescriptionActivity" />
         <activity android:name=".MainActivity" />
 
         <meta-data

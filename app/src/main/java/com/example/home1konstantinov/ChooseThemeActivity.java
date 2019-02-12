@@ -9,7 +9,7 @@ import android.widget.RadioButton;
 import com.example.home1konstantinov.settings.Settings;
 import com.example.home1konstantinov.settings.Theme;
 
-public class ChooseTheme extends AppCompatActivity {
+public class ChooseThemeActivity extends AppCompatActivity {
     private Settings settings = new Settings();
 
     @Override
@@ -40,7 +40,7 @@ public class ChooseTheme extends AppCompatActivity {
         buttonView.setOnClickListener((v) -> {
             if (this.settings.getTheme() != null) {
                 final Intent intent = new Intent();
-                intent.setClass(v.getContext(), ChooseDensity.class);
+                intent.setClass(v.getContext(), ChooseDensityActivity.class);
                 intent.putExtra("settings", this.settings);
                 startActivity(intent);
             }

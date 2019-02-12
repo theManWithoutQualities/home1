@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 
-import com.example.home1konstantinov.launcher.Launcher;
+import com.example.home1konstantinov.launcher.LauncherActivity;
 import com.example.home1konstantinov.settings.Density;
 import com.example.home1konstantinov.settings.Settings;
 
-public class ChooseDensity extends AppCompatActivity {
+public class ChooseDensityActivity extends AppCompatActivity {
     private Settings settings = new Settings();
 
     @Override
@@ -42,7 +42,7 @@ public class ChooseDensity extends AppCompatActivity {
         buttonView.setOnClickListener((v) -> {
             if (this.settings.getDensity() != null) {
                 final Intent intent = new Intent();
-                intent.setClass(v.getContext(), Launcher.class);
+                intent.setClass(v.getContext(), LauncherActivity.class);
                 intent.putExtra("settings", this.settings);
                 startActivity(intent);
             }

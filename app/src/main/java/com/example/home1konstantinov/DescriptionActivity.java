@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.example.home1konstantinov.settings.Settings;
 
-public class Description extends AppCompatActivity {
+public class DescriptionActivity extends AppCompatActivity {
     private Settings settings;
 
     @Override
@@ -26,7 +26,7 @@ public class Description extends AppCompatActivity {
         final View buttonView = findViewById(R.id.button);
         buttonView.setOnClickListener(v -> {
             final Intent intent = new Intent();
-            intent.setClass(v.getContext(), ChooseTheme.class);
+            intent.setClass(v.getContext(), ChooseThemeActivity.class);
             intent.putExtra("settings", this.settings);
             startActivity(intent);
         });
