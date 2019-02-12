@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.Random;
 
 class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
-    private Random random = new Random();
-    private Map<Integer, Integer> colorMap = new HashMap<>();
+    private final Random random = new Random();
+    private final Map<Integer, Integer> colorMap = new HashMap<>();
 
     @NonNull
     @Override

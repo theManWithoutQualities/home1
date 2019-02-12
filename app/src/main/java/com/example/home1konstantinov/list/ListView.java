@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.contacts;
+package com.example.home1konstantinov.list;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -12,13 +12,13 @@ import android.widget.TextView;
 
 import com.example.home1konstantinov.R;
 
-public class ContactView extends LinearLayout {
+public class ListView extends LinearLayout {
 
-    public ContactView(Context context) {
+    public ListView(Context context) {
         super(context);
     }
 
-    public ContactView(Context context, AttributeSet attrs) {
+    public ListView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

@@ -55,17 +55,21 @@ public class Launcher extends AppCompatActivity {
     private int calculateSpans(Density density, int orientation) {
         if (density.equals(Density.STANDARD)) {
             switch (orientation) {
-                case(Configuration.ORIENTATION_PORTRAIT):
+                case Configuration.ORIENTATION_PORTRAIT:
                     return 4;
-                case(Configuration.ORIENTATION_LANDSCAPE):
+                case Configuration.ORIENTATION_LANDSCAPE:
                     return 6;
+                default:
+                    return 4;
             }
         } else if (density.equals(Density.HIGH)){
             switch (orientation) {
-                case(Configuration.ORIENTATION_PORTRAIT):
+                case Configuration.ORIENTATION_PORTRAIT:
                     return 5;
-                case(Configuration.ORIENTATION_LANDSCAPE):
+                case Configuration.ORIENTATION_LANDSCAPE:
                     return 7;
+                default:
+                    return 5;
             }
         }
         return 5;

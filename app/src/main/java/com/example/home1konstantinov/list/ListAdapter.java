@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.contacts;
+package com.example.home1konstantinov.list;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -9,22 +9,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.home1konstantinov.R;
 
-import java.util.LinkedList;
+import java.util.List;
 
-class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ContactListHolder> {
-    private LinkedList<Integer> colorList;
+class ListAdapter extends RecyclerView.Adapter<ListAdapter.ContactListHolder> {
+    private final List<Integer> colorList;
     private int deleteCandidateId;
-    private View.OnClickListener deleteItemListener = new View.OnClickListener() {
+
+    public List<Integer> getColorList() {
+        return colorList;
+    }
+
+    public int getDeleteCandidateId() {
+        return deleteCandidateId;
+    }
+
+    private final View.OnClickListener deleteItemListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            colorList.remove(deleteCandidateId);
-            notifyItemRemoved(deleteCandidateId);
-            notifyItemRangeChanged(deleteCandidateId, colorList.size());
+            getColorList().remove(getDeleteCandidateId());
+            notifyItemRemoved(getDeleteCandidateId());
+            notifyItemRangeChanged(getDeleteCandidateId(), getColorList().size());
             Log.i("ACTION", "remove item");
         }
     };
 
-    public ContactListAdapter(LinkedList<Integer> colorList) {
+    public ListAdapter setDeleteCandidateId(int deleteCandidateId) {
+        this.deleteCandidateId = deleteCandidateId;
+        return this;
+    }
+
+    public ListAdapter(List<Integer> colorList) {
         this.colorList = colorList;
     }
 
@@ -35,7 +49,7 @@ class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.Contact
                 .from(viewGroup.getContext())
                 .inflate(R.layout.item_contact_view, viewGroup, false);
         view.setOnLongClickListener((v) -> {
-            deleteCandidateId = (int) v.getTag();
+            setDeleteCandidateId((int) v.getTag());
             Snackbar
                     .make(v, "Are you sure?", Snackbar.LENGTH_INDEFINITE)
                     .setDuration(5000)
@@ -67,10 +81,10 @@ class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.Contact
         }
 
         public void bindColor(int color) {
-            ((ContactView)itemView).setAvatarColor(color);
+            ((ListView)itemView).setAvatarColor(color);
         }
         public void bindTitle(String title) {
-            ((ContactView)itemView).setTitle(title);
+            ((ListView)itemView).setTitle(title);
         }
         public void bindTag(int tag) {
             itemView.setTag(tag);

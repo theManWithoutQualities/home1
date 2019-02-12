@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.contacts;
+package com.example.home1konstantinov.list;
 
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +11,12 @@ import android.view.View;
 import com.example.home1konstantinov.R;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
-public class ContactListActivity extends AppCompatActivity {
-    private Random random = new Random();
-    private LinkedList<Integer> colorList = new LinkedList<>();
+public class ListActivity extends AppCompatActivity {
+    private final Random random = new Random();
+    private final List<Integer> colorList = new LinkedList<>();
     public static final int INITIAL_CONTACTS_SIZE = 1000;
 
     @Override
@@ -28,7 +29,7 @@ public class ContactListActivity extends AppCompatActivity {
         listRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         listRecyclerView.setLayoutManager(linearLayoutManager);
-        listRecyclerView.setAdapter(new ContactListAdapter(colorList));
+        listRecyclerView.setAdapter(new ListAdapter(colorList));
     }
 
     private void generateColorData() {

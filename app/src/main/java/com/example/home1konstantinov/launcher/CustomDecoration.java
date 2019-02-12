@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 public class CustomDecoration extends RecyclerView.ItemDecoration {
-    private int offset;
+    private final int offset;
 
     public CustomDecoration(int offset) {
         this.offset = offset;

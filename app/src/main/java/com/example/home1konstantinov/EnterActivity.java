@@ -3,8 +3,6 @@ package com.example.home1konstantinov;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.preference.PreferenceManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,10 +11,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.home1konstantinov.contacts.ContactListActivity;
+import com.example.home1konstantinov.list.ListActivity;
 import com.example.home1konstantinov.launcher.Launcher;
 
 public class EnterActivity extends AppCompatActivity
@@ -28,7 +25,7 @@ public class EnterActivity extends AppCompatActivity
         final SharedPreferences defaultSharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
         final String theme = defaultSharedPreferences.getString("theme", "light");
-        setTheme(theme.equals("light") ? R.style.light : R.style.dark);
+        setTheme("light".equals(theme) ? R.style.light : R.style.dark);
         setContentView(R.layout.activity_enter);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,43 +50,21 @@ public class EnterActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.enter, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        final Intent intent = new Intent();
         if (id == R.id.nav_launcher) {
-
+            intent.setClass(this, Launcher.class);
         } else if (id == R.id.nav_list) {
-
+            intent.setClass(this, ListActivity.class);
         } else if (id == R.id.nav_settings) {
-
+            intent.setClass(this, SettingsActivity.class);
         }
+        startActivity(intent);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -97,24 +72,6 @@ public class EnterActivity extends AppCompatActivity
     public void clickAvatarHandler(View view) {
         final Intent intent = new Intent();
         intent.setClass(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void navLauncherHandler(MenuItem item) {
-        final Intent intent = new Intent();
-        intent.setClass(this, Launcher.class);
-        startActivity(intent);
-    }
-
-    public void navListHandler(MenuItem item) {
-        final Intent intent = new Intent();
-        intent.setClass(this, ContactListActivity.class);
-        startActivity(intent);
-    }
-
-    public void navSettingsHandler(MenuItem item) {
-        final Intent intent = new Intent();
-        intent.setClass(this, SettingsActivity.class);
         startActivity(intent);
     }
 }

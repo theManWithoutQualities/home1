@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
-import com.example.home1konstantinov.contacts.ContactListActivity;
+import com.example.home1konstantinov.list.ListActivity;
 import com.example.home1konstantinov.settings.Settings;
 
 import io.fabric.sdk.android.Fabric;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showContactList(View view) {
         final Intent intent = new Intent();
-        intent.setClass(view.getContext(), ContactListActivity.class);
+        intent.setClass(view.getContext(), ListActivity.class);
         startActivity(intent);
     }
 }
