@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.activity.contacts;
+package com.example.home1konstantinov.contacts;
 
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +10,7 @@ import android.view.View;
 
 import com.example.home1konstantinov.R;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Random;
 
 public class ContactListActivity extends AppCompatActivity {

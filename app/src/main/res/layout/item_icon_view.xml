@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.home1konstantinov.activity.launcher.SquareView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.home1konstantinov.launcher.SquareView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
-</com.example.home1konstantinov.activity.launcher.SquareView>
+</com.example.home1konstantinov.launcher.SquareView>

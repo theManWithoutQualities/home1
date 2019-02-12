@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.activity.launcher;
+package com.example.home1konstantinov.launcher;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.home1konstantinov.EnterActivity;
 import com.example.home1konstantinov.R;
-import com.example.home1konstantinov.activity.MainActivity;
 import com.example.home1konstantinov.settings.Density;
 import com.example.home1konstantinov.settings.Settings;
 

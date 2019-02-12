@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.activity;
+package com.example.home1konstantinov;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 
-import com.example.home1konstantinov.R;
-import com.example.home1konstantinov.activity.launcher.Launcher;
+import com.example.home1konstantinov.launcher.Launcher;
 import com.example.home1konstantinov.settings.Density;
 import com.example.home1konstantinov.settings.Settings;
 

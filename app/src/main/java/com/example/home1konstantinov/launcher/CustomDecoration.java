@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.activity.launcher;
+package com.example.home1konstantinov.launcher;
 
 import android.graphics.Rect;
 import android.support.annotation.NonNull;

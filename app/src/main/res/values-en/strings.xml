@@ -16,4 +16,5 @@
     <string name="list">Список</string>
     <string name="settings">Настройки</string>
     <string name="theme">Тема</string>
+    <string name="density">Плотность</string>
 </resources>

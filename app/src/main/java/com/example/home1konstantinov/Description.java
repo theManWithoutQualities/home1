@@ -1,11 +1,10 @@
-package com.example.home1konstantinov.activity;
+package com.example.home1konstantinov;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.home1konstantinov.R;
 import com.example.home1konstantinov.settings.Settings;
 
 public class Description extends AppCompatActivity {

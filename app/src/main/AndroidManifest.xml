@@ -29,18 +29,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.contacts.ContactListActivity" />
+        <activity android:name=".contacts.ContactListActivity" />
         <activity
-            android:name=".activity.launcher.Launcher"
-            android:parentActivityName=".activity.MainActivity">
+            android:name=".launcher.Launcher"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EnterActivity" />
         </activity>
-        <activity android:name=".activity.ChooseDensity" />
-        <activity android:name=".activity.ChooseTheme" />
-        <activity android:name=".activity.Description" />
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".ChooseDensity" />
+        <activity android:name=".ChooseTheme" />
+        <activity android:name=".Description" />
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

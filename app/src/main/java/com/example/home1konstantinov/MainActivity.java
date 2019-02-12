@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.activity;
+package com.example.home1konstantinov;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,7 @@ import android.view.View;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
-import com.example.home1konstantinov.R;
-import com.example.home1konstantinov.activity.contacts.ContactListActivity;
+import com.example.home1konstantinov.contacts.ContactListActivity;
 import com.example.home1konstantinov.settings.Settings;
 
 import io.fabric.sdk.android.Fabric;

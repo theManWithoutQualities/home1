@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.activity.contacts;
+package com.example.home1konstantinov.contacts;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;

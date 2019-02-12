@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="18dp"
     android:id="@+id/linear_layout"
-    tools:context=".activity.MainActivity">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/frame"

@@ -1,4 +1,4 @@
-package com.example.home1konstantinov.activity.launcher;
+package com.example.home1konstantinov.launcher;
 
 import android.content.Context;
 import android.util.AttributeSet;

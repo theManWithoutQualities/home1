@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="18dp"
     android:id="@+id/linear_layout"
-    tools:context=".activity.ChooseDensity">
+    tools:context=".ChooseDensity">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
