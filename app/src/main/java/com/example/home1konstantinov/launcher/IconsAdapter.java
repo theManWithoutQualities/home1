@@ -12,7 +12,7 @@ import com.example.home1konstantinov.R;
 import java.util.List;
 
 class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
-    private List<Integer> colorList;
+    private final List<Integer> colorList;
 
     public List<Integer> getColorList() {
         return colorList;
@@ -42,7 +42,8 @@ class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
     }
 
     public class IconsViewHolder extends RecyclerView.ViewHolder {
-        private View.OnClickListener deleteIconListener = (v) -> removeAt(getAdapterPosition());
+        private final View.OnClickListener deleteIconListener =
+                (v) -> removeAt(getAdapterPosition());
         public IconsViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnLongClickListener((v) -> {
@@ -61,7 +62,7 @@ class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
         }
     }
 
-    private void removeAt(int position) {
+    public void removeAt(int position) {
         colorList.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, colorList.size());

@@ -64,7 +64,7 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListHolder> {
         }
     }
 
-    private void removeAt(int position) {
+    public void removeAt(int position) {
         colorList.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, colorList.size());

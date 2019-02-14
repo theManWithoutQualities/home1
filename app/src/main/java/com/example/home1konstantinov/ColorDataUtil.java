@@ -6,9 +6,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class ColorDataUtil {
+public final class ColorDataUtil {
+
     private static final Random random = new Random();
     public static final int INITIAL_LIST_SIZE = 1000;
+
+    private ColorDataUtil() {}
 
     public static List<Integer> getRandomColorList() {
         List<Integer> result = new LinkedList<>();
