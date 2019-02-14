@@ -1,19 +1,19 @@
 package com.example.home1konstantinov.list;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.example.home1konstantinov.BasicActivity;
 import com.example.home1konstantinov.ColorDataUtil;
 import com.example.home1konstantinov.EnterActivity;
 import com.example.home1konstantinov.R;
 import java.util.List;
 
-public class ListActivity extends AppCompatActivity {
+public class ListActivity extends BasicActivity {
 
     private List<Integer> colorList;
 
@@ -35,6 +35,7 @@ public class ListActivity extends AppCompatActivity {
         colorList.add(0, color);
         final RecyclerView listRecyclerView = findViewById(R.id.listRecyclerView);
         listRecyclerView.getAdapter().notifyItemInserted(0);
+        listRecyclerView.scrollToPosition(0);
         Log.i("ACTION", "add item");
     }
 

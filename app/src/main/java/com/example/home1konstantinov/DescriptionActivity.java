@@ -1,13 +1,12 @@
 package com.example.home1konstantinov;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.home1konstantinov.settings.Settings;
 
-public class DescriptionActivity extends AppCompatActivity {
+public class DescriptionActivity extends BasicActivity {
     private Settings settings;
 
     @Override

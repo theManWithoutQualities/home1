@@ -1,31 +1,25 @@
 package com.example.home1konstantinov;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.home1konstantinov.list.ListActivity;
 import com.example.home1konstantinov.launcher.LauncherActivity;
 
-public class EnterActivity extends AppCompatActivity
+public class EnterActivity extends BasicActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final SharedPreferences defaultSharedPreferences =
-                PreferenceManager.getDefaultSharedPreferences(this);
-        final String theme = defaultSharedPreferences.getString("theme", "light");
-        setTheme("light".equals(theme) ? R.style.light : R.style.dark);
         setContentView(R.layout.activity_enter);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

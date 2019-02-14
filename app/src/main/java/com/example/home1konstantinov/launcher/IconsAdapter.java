@@ -13,19 +13,9 @@ import java.util.List;
 
 class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
     private List<Integer> colorList;
-    private int deleteCandidateId;
 
     public List<Integer> getColorList() {
         return colorList;
-    }
-
-    public int getDeleteCandidateId() {
-        return deleteCandidateId;
-    }
-
-    public IconsAdapter setDeleteCandidateId(int deleteCandidateId) {
-        this.deleteCandidateId = deleteCandidateId;
-        return this;
     }
 
     public IconsAdapter(List<Integer> colorList) {
@@ -38,16 +28,6 @@ class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
         View view = LayoutInflater
                 .from(viewGroup.getContext())
                 .inflate(R.layout.item_icon_view, viewGroup, false);
-        view.setOnLongClickListener((v) -> {
-            setDeleteCandidateId((int) v.getTag());
-            Snackbar
-                    .make(v, "Are you sure?", Snackbar.LENGTH_INDEFINITE)
-                    .setDuration(5000)
-                    .setAction("Yes", deleteIconListener)
-                    .show();
-            Log.i("ACTION", "snackbar");
-            return true;
-        });
         return new IconsViewHolder(view);
     }
 
@@ -59,27 +39,32 @@ class IconsAdapter extends RecyclerView.Adapter<IconsAdapter.IconsViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull IconsViewHolder iconsViewHolder, int position) {
         iconsViewHolder.bindColor(colorList.get(position));
-        iconsViewHolder.bindTag(position);
     }
 
-    public static class IconsViewHolder extends RecyclerView.ViewHolder {
+    public class IconsViewHolder extends RecyclerView.ViewHolder {
+        private View.OnClickListener deleteIconListener = (v) -> removeAt(getAdapterPosition());
         public IconsViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnLongClickListener((v) -> {
+                Snackbar
+                        .make(v, "Are you sure?", Snackbar.LENGTH_INDEFINITE)
+                        .setDuration(5000)
+                        .setAction("Yes", deleteIconListener)
+                        .show();
+                Log.i("ACTION", "snackbar");
+                return true;
+            });
         }
 
         public void bindColor(int color) {
             itemView.setBackgroundColor(color);
         }
-
-        public void bindTag(int tag) {
-            itemView.setTag(tag);
-        }
     }
 
-    private final View.OnClickListener deleteIconListener = v -> {
-        getColorList().remove(getDeleteCandidateId());
-        notifyItemRemoved(getDeleteCandidateId());
-        notifyItemRangeChanged(getDeleteCandidateId(), getColorList().size());
+    private void removeAt(int position) {
+        colorList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, colorList.size());
         Log.i("ACTION", "remove icon");
-    };
+    }
 }

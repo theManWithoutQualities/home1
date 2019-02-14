@@ -2,13 +2,13 @@ package com.example.home1konstantinov.launcher;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.example.home1konstantinov.BasicActivity;
 import com.example.home1konstantinov.ColorDataUtil;
 import com.example.home1konstantinov.EnterActivity;
 import com.example.home1konstantinov.R;
@@ -16,7 +16,7 @@ import com.example.home1konstantinov.settings.Density;
 import com.example.home1konstantinov.settings.Settings;
 import java.util.List;
 
-public class LauncherActivity extends AppCompatActivity {
+public class LauncherActivity extends BasicActivity {
     private Settings settings = new Settings();
     private List<Integer> colorList;
 

@@ -11,29 +11,8 @@ import com.example.home1konstantinov.R;
 
 import java.util.List;
 
-class ListAdapter extends RecyclerView.Adapter<ListAdapter.ContactListHolder> {
+class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListHolder> {
     private final List<Integer> colorList;
-    private int deleteCandidateId;
-
-    public List<Integer> getColorList() {
-        return colorList;
-    }
-
-    public int getDeleteCandidateId() {
-        return deleteCandidateId;
-    }
-
-    private final View.OnClickListener deleteItemListener = v -> {
-        getColorList().remove(getDeleteCandidateId());
-        notifyItemRemoved(getDeleteCandidateId());
-        notifyItemRangeChanged(getDeleteCandidateId(), getColorList().size());
-        Log.i("ACTION", "remove item");
-    };
-
-    public ListAdapter setDeleteCandidateId(int deleteCandidateId) {
-        this.deleteCandidateId = deleteCandidateId;
-        return this;
-    }
 
     public ListAdapter(List<Integer> colorList) {
         this.colorList = colorList;
@@ -41,28 +20,17 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.ContactListHolder> {
 
     @NonNull
     @Override
-    public ContactListHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ListHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater
                 .from(viewGroup.getContext())
                 .inflate(R.layout.item_contact_view, viewGroup, false);
-        view.setOnLongClickListener((v) -> {
-            setDeleteCandidateId((int) v.getTag());
-            Snackbar
-                    .make(v, "Are you sure?", Snackbar.LENGTH_INDEFINITE)
-                    .setDuration(5000)
-                    .setAction("Yes", deleteItemListener)
-                    .show();
-            Log.i("ACTION", "snackbar");
-            return true;
-        });
-        return new ContactListHolder(view);
+        return new ListHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContactListHolder contactListHolder, int i) {
-        contactListHolder.bindColor(colorList.get(i));
-        contactListHolder.bindTitle(String.format("#%06X", 0xFFFFFF & colorList.get(i)));
-        contactListHolder.bindTag(i);
+    public void onBindViewHolder(@NonNull ListHolder listHolder, int i) {
+        listHolder.bindColor(colorList.get(i));
+        listHolder.bindTitle(String.format("#%06X", 0xFFFFFF & colorList.get(i)));
     }
 
     @Override
@@ -72,9 +40,20 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.ContactListHolder> {
 
 
 
-    public static class ContactListHolder extends RecyclerView.ViewHolder {
-        public ContactListHolder(@NonNull View itemView) {
+    public class ListHolder extends RecyclerView.ViewHolder {
+
+        View.OnClickListener deleteItemListener = (v) -> removeAt(getAdapterPosition());
+        public ListHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnLongClickListener((v) -> {
+                Snackbar
+                        .make(v, "Are you sure?", Snackbar.LENGTH_INDEFINITE)
+                        .setDuration(5000)
+                        .setAction("Yes", deleteItemListener)
+                        .show();
+                Log.i("ACTION", "snackbar");
+                return true;
+            });
         }
 
         public void bindColor(int color) {
@@ -83,8 +62,12 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.ContactListHolder> {
         public void bindTitle(String title) {
             ((ListView)itemView).setTitle(title);
         }
-        public void bindTag(int tag) {
-            itemView.setTag(tag);
-        }
+    }
+
+    private void removeAt(int position) {
+        colorList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, colorList.size());
+        Log.i("ACTION", "remove list item");
     }
 }

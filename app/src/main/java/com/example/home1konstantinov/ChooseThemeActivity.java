@@ -1,7 +1,6 @@
 package com.example.home1konstantinov;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
@@ -9,7 +8,7 @@ import android.widget.RadioButton;
 import com.example.home1konstantinov.settings.Settings;
 import com.example.home1konstantinov.settings.Theme;
 
-public class ChooseThemeActivity extends AppCompatActivity {
+public class ChooseThemeActivity extends BasicActivity {
     private Settings settings = new Settings();
 
     @Override
